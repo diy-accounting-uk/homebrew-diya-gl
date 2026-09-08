@@ -1,8 +1,8 @@
 class DiyaGl < Formula
-  desc "Recalculate, read and write diya-gl books: a UK sole trader or company's"
+  desc "Recalculate, read and write DIYA-GL books from the command line"
   homepage "https://spreadsheets.diyaccounting.co.uk/diya-gl.html"
-  url "https://registry.npmjs.org/@diy-accounting-uk/diya-gl/-/diya-gl-1.0.0.tgz"
-  sha256 "2933f73ab5498c444a5cf503982ee67e983d7f9d7e4d592a94b85e06a29f412c"
+  url "https://registry.npmjs.org/@diy-accounting-uk/diya-gl/-/diya-gl-1.0.1.tgz"
+  sha256 "f295889f14824679775eb96506149ef7af002507701eee999417d6634c5e04c8"
   license "AGPL-3.0-only"
 
   depends_on "node"
