@@ -30,8 +30,9 @@ jobs:
             echo "No change to commit."
           fi
 
-      - name: Install and test the formula
+      - name: Install and test the formula from the tap just pushed
         if: hashFiles('Formula/diya-gl.rb') != ''
         run: |
-          brew install --build-from-source ./Formula/diya-gl.rb
-          brew test ./Formula/diya-gl.rb
+          brew tap diy-accounting-uk/tap
+          brew install --build-from-source diy-accounting-uk/tap/diya-gl
+          brew test diy-accounting-uk/tap/diya-gl
