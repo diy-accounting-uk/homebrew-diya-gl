@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2006-2026 DIY Accounting Limited
+#
 # update-formula.sh — write a Homebrew node-package formula from the npm registry.
 #
 # Reads the latest published version of PACKAGE from the npm registry,
@@ -64,6 +67,25 @@ description="$(node -e '
   console.log(pkg.description || "");
 ' "$tmp_json")"
 
+license="$(node -e '
+  const fs = require("fs");
+  const pkg = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+  console.log(pkg.license || "");
+' "$tmp_json")"
+
+# The formula must state the licence the registry actually publishes, not
+# an assumed value, so a missing or malformed field stops the run instead
+# of writing a wrong or empty licence line into the formula.
+if [[ -z "$license" ]]; then
+  echo "$PACKAGE has no license field on the npm registry ($registry_url). Refusing to write $FORMULA." >&2
+  exit 1
+fi
+
+if [[ ! "$license" =~ ^[A-Za-z0-9.+-]+$ ]]; then
+  echo "$PACKAGE's license field \"$license\" is not a bare SPDX identifier. Refusing to write $FORMULA." >&2
+  exit 1
+fi
+
 if [[ -z "$description" ]]; then
   description="$PACKAGE, installed from npm"
 fi
@@ -99,12 +121,14 @@ escaped_description="$(printf '%s' "$description" | sed 's/\\/\\\\/g; s/"/\\"/g'
 mkdir -p "$(dirname "$FORMULA")"
 
 cat > "$FORMULA" <<RUBY
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2006-2026 DIY Accounting Limited
 class ${class_name} < Formula
   desc "${escaped_description}"
   homepage "https://spreadsheets.diyaccounting.co.uk/diya-gl.html"
   url "${tarball_url}"
   sha256 "${sha256}"
-  license "AGPL-3.0-only"
+  license "${license}"
 
   depends_on "node"
 
