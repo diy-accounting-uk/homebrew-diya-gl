@@ -3,8 +3,8 @@
 name: Update formula
 
 on:
-  schedule:
-    - cron: "17 * * * *"
+  repository_dispatch:
+    types: [diya-gl-published]
   workflow_dispatch:
     inputs:
       run-gate:
