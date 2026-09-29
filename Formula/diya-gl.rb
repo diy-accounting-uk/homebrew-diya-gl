@@ -3,8 +3,8 @@
 class DiyaGl < Formula
   desc "Recalculate, read and write DIYA-GL books from the command line"
   homepage "https://spreadsheets.diyaccounting.co.uk/diya-gl.html"
-  url "https://registry.npmjs.org/@diy-accounting-uk/diya-gl/-/diya-gl-1.2.36.tgz"
-  sha256 "01ec93eea147597a705786200e46bc4c81fab396071049a9aa484c794a239ed3"
+  url "https://registry.npmjs.org/@diy-accounting-uk/diya-gl/-/diya-gl-1.2.37.tgz"
+  sha256 "6d7a60a35d002ba1456b055cd8500a82ec9a6efea4d664b733624eb61bece600"
   license "Apache-2.0"
 
   depends_on "node"
