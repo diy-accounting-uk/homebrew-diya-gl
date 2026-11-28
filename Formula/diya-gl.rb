@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (C) 2006-2026 DIY Accounting Limited
 class DiyaGl < Formula
-  desc "Recalculate, read and write DIYA-GL books from the command line"
+  desc "Bookkeeping from the command line: recalculate, read and write DIYA-GL books"
   homepage "https://spreadsheets.diyaccounting.co.uk/diya-gl.html"
-  url "https://registry.npmjs.org/@diy-accounting-uk/diya-gl/-/diya-gl-1.2.101.tgz"
-  sha256 "b6a151e2125053870b3f22f28c3d2258719ef2780aee8fa656355113ce96a647"
+  url "https://registry.npmjs.org/@diy-accounting-uk/diya-gl/-/diya-gl-1.2.102.tgz"
+  sha256 "41f84f7a21a413ae2490ab9b4b28be15dd194b114c737981cb9d38e36cf23251"
   license "Apache-2.0"
 
   depends_on "node"
